@@ -179,7 +179,7 @@ async function generateRoutine() {
 
   try {
     // Send request to Cloudflare Worker endpoint
-    const response = await fetch(WORKER_URL, {
+    const response = await fetch(lorealsmartroutine.jtut.workers.dev, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
