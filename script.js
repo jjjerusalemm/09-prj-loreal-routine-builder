@@ -1,4 +1,5 @@
 /* Get references to DOM elements */
+const WORKER_URL = "https://lorealsmartroutine.jtut.workers.dev";
 const categoryFilter = document.getElementById("categoryFilter");
 const productsContainer = document.getElementById("productsContainer");
 const chatForm = document.getElementById("chatForm");
