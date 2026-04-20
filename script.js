@@ -179,16 +179,13 @@ async function generateRoutine() {
 
   try {
     // Send request to Cloudflare Worker endpoint
-    const response = await fetch(
-      "https://your-cloudflare-worker-endpoint.workers.dev",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ messages }),
+    const response = await fetch(WORKER_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
       },
-    );
+      body: JSON.stringify({ messages }),
+    });
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
@@ -200,8 +197,15 @@ async function generateRoutine() {
     // Add assistant response to conversation history
     messages.push({ role: "assistant", content: aiResponse });
 
-    // Display the response in chat window
-    chatWindow.innerHTML = aiResponse;
+    // Display the conversation in chat window
+    chatWindow.innerHTML = messages
+      .map(
+        (message) =>
+          `<div class="message ${message.role}"><strong>${
+            message.role === "user" ? "You" : "AI"
+          }:</strong> ${message.content}</div>`,
+      )
+      .join("");
   } catch (error) {
     chatWindow.innerHTML = `Error generating routine: ${error.message}`;
   }
@@ -244,16 +248,13 @@ chatForm.addEventListener("submit", async (e) => {
 
   try {
     // Send request to Cloudflare Worker endpoint with full conversation history
-    const response = await fetch(
-      "https://your-cloudflare-worker-endpoint.workers.dev",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ messages }),
+    const response = await fetch(WORKER_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
       },
-    );
+      body: JSON.stringify({ messages }),
+    });
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
