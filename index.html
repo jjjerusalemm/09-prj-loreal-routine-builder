@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -46,32 +46,29 @@
       <div class="selected-products">
         <h2>Selected Products</h2>
         <div id="selectedProductsList"></div>
-        <button id="generateRoutine" class="generate-btn">
-          <i class="fa-solid fa-wand-magic-sparkles"></i> Generate Routine
-        </button>
+        <div class="button-group">
+          <button id="clearAll" class="clear-btn">Clear All</button>
+          <button id="generateRoutine" class="generate-btn">
+            <i class="fa-solid fa-wand-magic-sparkles"></i> Generate Routine
+          </button>
+        </div>
       </div>
 
       <!------- Chat Area ------->
-      <section class="chatbox">
-        <h2>Let's Build Your Routine</h2>
+      <div class="chat-section">
+        <h2>Ask Questions About Your Routine</h2>
         <div id="chatWindow" class="chat-window"></div>
 
         <form id="chatForm" class="chat-form">
-          <label for="userInput" class="visually-hidden">Message</label>
           <input
-            id="userInput"
-            name="userInput"
             type="text"
-            placeholder="Ask me about products or routines…"
-            autocomplete="off"
+            id="chatInput"
+            placeholder="Ask about skincare, haircare, makeup, or your routine..."
             required
           />
-          <button type="submit" id="sendBtn">
-            <i class="fa-solid fa-paper-plane"></i>
-            <span class="visually-hidden">Send</span>
-          </button>
+          <button type="submit">Ask</button>
         </form>
-      </section>
+      </div>
 
       <!------- Footer Links ------->
       <footer class="site-footer">

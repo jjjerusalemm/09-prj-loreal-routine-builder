@@ -8,7 +8,9 @@
 /* —— body + fonts —— */
 body {
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
-  color: #333;
+  color: #e3e3e3;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+  min-height: 100vh;
   display: flex;
   justify-content: center;
 }
@@ -16,24 +18,32 @@ body {
 .page-wrapper {
   width: 90%;
   max-width: 900px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 30px;
+  margin: 20px 0;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
 /* header */
 .site-header {
   text-align: center;
-  padding-top: 50px;
-  padding-bottom: 10px;
+  padding-top: 30px;
+  padding-bottom: 20px;
 }
 
 .logo {
   width: 250px;
   margin-bottom: 15px;
+  filter: drop-shadow(0 5px 10px rgba(255, 0, 59, 0.3));
 }
 
 .site-title {
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 500;
   margin-bottom: 10px;
+  color: #e3a535;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 /* category filter */
@@ -46,39 +56,63 @@ body {
   width: 100%;
   padding: 16px;
   font-size: 18px;
-  border: 2px solid #000;
-  border-radius: 8px;
+  border: 2px solid #e3a535;
+  border-radius: 12px;
   cursor: pointer;
-  background-color: white;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  color: #e3e3e3;
   font-weight: 500;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
 }
 
 .search-section select:focus {
   outline: none;
-  border-color: #666;
+  border-color: #ff003b;
+  box-shadow: 0 0 0 3px rgba(255, 0, 59, 0.2);
+}
+
+.search-section select option {
+  background: #2a2a2a;
+  color: #e3e3e3;
 }
 
 /* chat section */
-.chatbox {
+.chat-section {
   margin: 40px 0;
-  border: 2px solid #000;
-  border-radius: 8px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  border: 1px solid rgba(227, 165, 53, 0.3);
+  border-radius: 16px;
   padding: 26px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.chatbox h2 {
-  font-size: 20px;
+.chat-section h2 {
+  font-size: 22px;
   margin-bottom: 20px;
+  color: #e3a535;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .chat-window {
   padding: 20px;
-  font-size: 18px;
-  line-height: 1.5;
+  font-size: 16px;
+  line-height: 1.6;
   height: 250px;
   overflow-y: auto;
-  background: #fafafa;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
   margin-bottom: 20px;
+  border: 1px solid rgba(227, 165, 53, 0.2);
+  color: #e3e3e3;
 }
 
 /* placeholder message */
@@ -86,8 +120,9 @@ body {
   width: 100%;
   text-align: center;
   padding: 40px;
-  color: #666;
+  color: #a0a0a0;
   font-size: 18px;
+  font-style: italic;
 }
 
 /* input row */
@@ -99,39 +134,47 @@ body {
 
 .chat-form input {
   flex: 1;
-  padding: 12px;
-  font-size: 18px;
-  border: none;
-  border-bottom: 2px solid #ccc;
-  background: transparent;
+  padding: 14px;
+  font-size: 16px;
+  border: 1px solid rgba(227, 165, 53, 0.3);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #e3e3e3;
+  transition: all 0.3s ease;
 }
 
 .chat-form input:focus {
   outline: none;
-  border-bottom-color: #000;
+  border-color: #ff003b;
+  box-shadow: 0 0 0 2px rgba(255, 0, 59, 0.2);
+}
+
+.chat-form input::placeholder {
+  color: #a0a0a0;
 }
 
 .chat-form button {
-  font-size: 18px;
-  background: #000;
+  font-size: 16px;
+  background: linear-gradient(135deg, #e3a535 0%, #ff003b 100%);
   color: #fff;
   border: none;
-  padding: 12px;
-  width: 48px;
-  height: 48px;
+  padding: 14px 20px;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .chat-form button:hover {
-  background: #666666;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
 .chat-form button:focus {
-  outline: 2px solid #000;
+  outline: 2px solid #ff003b;
   outline-offset: 2px;
 }
 
@@ -153,7 +196,7 @@ body {
   margin: 60px 0 40px;
   text-align: center;
   font-size: 14px;
-  color: #666;
+  color: #a0a0a0;
 }
 
 .site-footer nav {
@@ -162,12 +205,13 @@ body {
 
 .site-footer a {
   margin: 0 8px;
-  color: #000;
+  color: #e3a535;
   text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 .site-footer a:hover {
-  color: #666666;
+  color: #ff003b;
 }
 
 /* products grid */
@@ -180,12 +224,30 @@ body {
 
 .product-card {
   flex: 0 1 calc(33.333% - 14px);
-  border: 1px solid #ccc;
-  padding: 15px;
-  border-radius: 4px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  border: 1px solid rgba(227, 165, 53, 0.3);
+  padding: 20px;
+  border-radius: 16px;
   display: flex;
   gap: 15px;
   min-height: 160px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+.product-card.selected {
+  border: 3px solid #ff003b;
+  box-shadow: 0 0 20px rgba(255, 0, 59, 0.4);
 }
 
 .product-card img {
@@ -193,6 +255,7 @@ body {
   height: 110px;
   object-fit: contain;
   flex-shrink: 0;
+  border-radius: 8px;
 }
 
 .product-card .product-info {
@@ -206,24 +269,56 @@ body {
 .product-card h3 {
   font-size: 16px;
   margin-bottom: 8px;
+  color: #e3e3e3;
 }
 
 .product-card p {
   font-size: 14px;
-  color: #666;
+  color: #b0b0b0;
+}
+
+.product-card .details-btn {
+  margin-top: 10px;
+  padding: 6px 12px;
+  background: linear-gradient(135deg, #e3a535 0%, #ff003b 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.3s ease;
+}
+
+.product-card .details-btn:hover {
+  transform: scale(1.05);
+}
+
+.product-card .product-description {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #d0d0d0;
+  line-height: 1.4;
 }
 
 /* selected products */
 .selected-products {
   margin: 40px 0;
-  padding: 20px;
-  border: 2px solid #000;
-  border-radius: 8px;
+  padding: 25px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  border: 1px solid rgba(227, 165, 53, 0.3);
+  border-radius: 16px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .selected-products h2 {
-  font-size: 20px;
+  font-size: 22px;
   margin-bottom: 20px;
+  color: #e3a535;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 #selectedProductsList {
@@ -232,22 +327,86 @@ body {
   gap: 10px;
 }
 
-.generate-btn {
-  width: 100%;
+.selected-product {
+  background: rgba(255, 0, 59, 0.1);
+  border: 1px solid rgba(255, 0, 59, 0.3);
+  padding: 10px 15px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.selected-product span {
+  flex: 1;
+  color: #e3e3e3;
+}
+
+.remove-btn {
+  background: #ff003b;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background 0.3s ease;
+}
+
+.remove-btn:hover {
+  background: #cc002f;
+}
+
+.button-group {
+  display: flex;
+  gap: 15px;
   margin-top: 20px;
+}
+
+.clear-btn {
+  flex: 1;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #e3e3e3;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  border: 1px solid rgba(227, 165, 53, 0.3);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.clear-btn:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 0, 59, 0.2) 0%,
+    rgba(255, 0, 59, 0.1) 100%
+  );
+  border-color: #ff003b;
+}
+
+.generate-btn {
+  flex: 2;
   padding: 16px;
   font-size: 18px;
   font-weight: 500;
   color: #fff;
-  background: #000;
+  background: linear-gradient(135deg, #e3a535 0%, #ff003b 100%);
   border: none;
-  border-radius: 8px;
+  border-radius: 12px;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .generate-btn:hover {
-  background: #666;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
 .generate-btn i {
