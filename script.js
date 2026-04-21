@@ -192,7 +192,7 @@ async function generateRoutine() {
     }
 
     const data = await response.json();
-    const aiResponse = data.choices[0].message.content;
+    const aiResponse = data.choices?.[0]?.message?.content || "No response";
 
     // Add assistant response to conversation history
     messages.push({ role: "assistant", content: aiResponse });
