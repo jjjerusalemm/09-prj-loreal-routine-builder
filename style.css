@@ -8,8 +8,8 @@
 /* —— body + fonts —— */
 body {
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
-  color: #e3e3e3;
-  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+  color: #333;
+  background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 100%);
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -18,11 +18,11 @@ body {
 .page-wrapper {
   width: 90%;
   max-width: 900px;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 20px;
   padding: 30px;
   margin: 20px 0;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
 
 /* header */
@@ -35,15 +35,15 @@ body {
 .logo {
   width: 250px;
   margin-bottom: 15px;
-  filter: drop-shadow(0 5px 10px rgba(255, 0, 59, 0.3));
+  filter: drop-shadow(0 5px 10px rgba(233, 30, 99, 0.3));
 }
 
 .site-title {
   font-size: 24px;
   font-weight: 500;
   margin-bottom: 10px;
-  color: #e3a535;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  color: #e91e63;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* category filter */
@@ -56,29 +56,29 @@ body {
   width: 100%;
   padding: 16px;
   font-size: 18px;
-  border: 2px solid #e3a535;
+  border: 2px solid #e91e63;
   border-radius: 12px;
   cursor: pointer;
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.1) 0%,
-    rgba(255, 255, 255, 0.05) 100%
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(248, 187, 217, 0.5) 100%
   );
-  color: #e3e3e3;
+  color: #333;
   font-weight: 500;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
 }
 
 .search-section select:focus {
   outline: none;
-  border-color: #ff003b;
-  box-shadow: 0 0 0 3px rgba(255, 0, 59, 0.2);
+  border-color: #c2185b;
+  box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.2);
 }
 
 .search-section select option {
-  background: #2a2a2a;
-  color: #e3e3e3;
+  background: #fff;
+  color: #333;
 }
 
 /* chat section */
@@ -86,20 +86,20 @@ body {
   margin: 40px 0;
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.1) 0%,
-    rgba(255, 255, 255, 0.05) 100%
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(248, 187, 217, 0.5) 100%
   );
-  border: 1px solid rgba(227, 165, 53, 0.3);
+  border: 1px solid rgba(233, 30, 99, 0.3);
   border-radius: 16px;
   padding: 26px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
 .chat-section h2 {
   font-size: 22px;
   margin-bottom: 20px;
-  color: #e3a535;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  color: #e91e63;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .chat-window {
@@ -108,11 +108,27 @@ body {
   line-height: 1.6;
   height: 250px;
   overflow-y: auto;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.8);
   border-radius: 8px;
   margin-bottom: 20px;
-  border: 1px solid rgba(227, 165, 53, 0.2);
-  color: #e3e3e3;
+  border: 1px solid rgba(233, 30, 99, 0.2);
+  color: #333;
+}
+
+.message {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.message.user {
+  background: rgba(233, 30, 99, 0.1);
+  text-align: right;
+}
+
+.message.assistant {
+  background: rgba(248, 187, 217, 0.5);
+  text-align: left;
 }
 
 /* placeholder message */
@@ -120,7 +136,7 @@ body {
   width: 100%;
   text-align: center;
   padding: 40px;
-  color: #a0a0a0;
+  color: #888;
   font-size: 18px;
   font-style: italic;
 }
@@ -136,26 +152,26 @@ body {
   flex: 1;
   padding: 14px;
   font-size: 16px;
-  border: 1px solid rgba(227, 165, 53, 0.3);
+  border: 1px solid rgba(233, 30, 99, 0.3);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.1);
-  color: #e3e3e3;
+  background: rgba(255, 255, 255, 0.8);
+  color: #333;
   transition: all 0.3s ease;
 }
 
 .chat-form input:focus {
   outline: none;
-  border-color: #ff003b;
-  box-shadow: 0 0 0 2px rgba(255, 0, 59, 0.2);
+  border-color: #c2185b;
+  box-shadow: 0 0 0 2px rgba(233, 30, 99, 0.2);
 }
 
 .chat-form input::placeholder {
-  color: #a0a0a0;
+  color: #888;
 }
 
 .chat-form button {
   font-size: 16px;
-  background: linear-gradient(135deg, #e3a535 0%, #ff003b 100%);
+  background: linear-gradient(135deg, #e91e63 0%, #c2185b 100%);
   color: #fff;
   border: none;
   padding: 14px 20px;
@@ -165,16 +181,16 @@ body {
   justify-content: center;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .chat-form button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 .chat-form button:focus {
-  outline: 2px solid #ff003b;
+  outline: 2px solid #c2185b;
   outline-offset: 2px;
 }
 
@@ -196,7 +212,7 @@ body {
   margin: 60px 0 40px;
   text-align: center;
   font-size: 14px;
-  color: #a0a0a0;
+  color: #666;
 }
 
 .site-footer nav {
@@ -205,13 +221,13 @@ body {
 
 .site-footer a {
   margin: 0 8px;
-  color: #e3a535;
+  color: #e91e63;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .site-footer a:hover {
-  color: #ff003b;
+  color: #c2185b;
 }
 
 /* products grid */
@@ -226,28 +242,28 @@ body {
   flex: 0 1 calc(33.333% - 14px);
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.1) 0%,
-    rgba(255, 255, 255, 0.05) 100%
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(248, 187, 217, 0.5) 100%
   );
-  border: 1px solid rgba(227, 165, 53, 0.3);
+  border: 1px solid rgba(233, 30, 99, 0.3);
   padding: 20px;
   border-radius: 16px;
   display: flex;
   gap: 15px;
   min-height: 160px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   cursor: pointer;
 }
 
 .product-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 }
 
 .product-card.selected {
-  border: 3px solid #ff003b;
-  box-shadow: 0 0 20px rgba(255, 0, 59, 0.4);
+  border: 3px solid #e91e63;
+  box-shadow: 0 0 20px rgba(233, 30, 99, 0.4);
 }
 
 .product-card img {
@@ -269,18 +285,18 @@ body {
 .product-card h3 {
   font-size: 16px;
   margin-bottom: 8px;
-  color: #e3e3e3;
+  color: #333;
 }
 
 .product-card p {
   font-size: 14px;
-  color: #b0b0b0;
+  color: #666;
 }
 
 .product-card .details-btn {
   margin-top: 10px;
   padding: 6px 12px;
-  background: linear-gradient(135deg, #e3a535 0%, #ff003b 100%);
+  background: linear-gradient(135deg, #e91e63 0%, #c2185b 100%);
   color: white;
   border: none;
   border-radius: 8px;
@@ -296,7 +312,7 @@ body {
 .product-card .product-description {
   margin-top: 10px;
   font-size: 13px;
-  color: #d0d0d0;
+  color: #555;
   line-height: 1.4;
 }
 
@@ -306,19 +322,19 @@ body {
   padding: 25px;
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.1) 0%,
-    rgba(255, 255, 255, 0.05) 100%
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(248, 187, 217, 0.5) 100%
   );
-  border: 1px solid rgba(227, 165, 53, 0.3);
+  border: 1px solid rgba(233, 30, 99, 0.3);
   border-radius: 16px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
 .selected-products h2 {
   font-size: 22px;
   margin-bottom: 20px;
-  color: #e3a535;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  color: #e91e63;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 #selectedProductsList {
@@ -328,8 +344,8 @@ body {
 }
 
 .selected-product {
-  background: rgba(255, 0, 59, 0.1);
-  border: 1px solid rgba(255, 0, 59, 0.3);
+  background: rgba(233, 30, 99, 0.1);
+  border: 1px solid rgba(233, 30, 99, 0.3);
   padding: 10px 15px;
   border-radius: 8px;
   display: flex;
@@ -340,11 +356,11 @@ body {
 
 .selected-product span {
   flex: 1;
-  color: #e3e3e3;
+  color: #333;
 }
 
 .remove-btn {
-  background: #ff003b;
+  background: #e91e63;
   color: white;
   border: none;
   padding: 4px 8px;
@@ -355,7 +371,7 @@ body {
 }
 
 .remove-btn:hover {
-  background: #cc002f;
+  background: #c2185b;
 }
 
 .button-group {
@@ -369,13 +385,13 @@ body {
   padding: 16px;
   font-size: 16px;
   font-weight: 500;
-  color: #e3e3e3;
+  color: #333;
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.1) 0%,
-    rgba(255, 255, 255, 0.05) 100%
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(248, 187, 217, 0.5) 100%
   );
-  border: 1px solid rgba(227, 165, 53, 0.3);
+  border: 1px solid rgba(233, 30, 99, 0.3);
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -384,10 +400,10 @@ body {
 .clear-btn:hover {
   background: linear-gradient(
     135deg,
-    rgba(255, 0, 59, 0.2) 0%,
-    rgba(255, 0, 59, 0.1) 100%
+    rgba(233, 30, 99, 0.2) 0%,
+    rgba(233, 30, 99, 0.1) 100%
   );
-  border-color: #ff003b;
+  border-color: #e91e63;
 }
 
 .generate-btn {
@@ -396,17 +412,17 @@ body {
   font-size: 18px;
   font-weight: 500;
   color: #fff;
-  background: linear-gradient(135deg, #e3a535 0%, #ff003b 100%);
+  background: linear-gradient(135deg, #e91e63 0%, #c2185b 100%);
   border: none;
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .generate-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 .generate-btn i {

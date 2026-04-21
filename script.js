@@ -1,4 +1,7 @@
 /* Get references to DOM elements */
+// Note: To run this project and avoid CORS issues with the OpenAI API,
+// start a local server: python -m http.server 8000
+// Then open http://localhost:8000 in your browser
 const API_URL = "https://api.openai.com/v1/chat/completions";
 const categoryFilter = document.getElementById("categoryFilter");
 const productsContainer = document.getElementById("productsContainer");
@@ -167,6 +170,14 @@ async function generateRoutine() {
     return;
   }
 
+  messages = [
+    {
+      role: "system",
+      content:
+        "You are a helpful assistant for creating personalized skincare routines using selected L'Oréal products. Provide step-by-step routines based on the products chosen.",
+    },
+  ];
+
   const productList = selectedProducts
     .map(
       (product) =>
@@ -185,6 +196,9 @@ async function generateRoutine() {
   chatWindow.appendChild(generatingDiv);
 
   try {
+    if (!OPENAI_API_KEY || OPENAI_API_KEY === "your-api-key-here") {
+      throw new Error("Please set a valid OpenAI API key in secrets.js");
+    }
     const response = await fetch(API_URL, {
       method: "POST",
       headers: {
