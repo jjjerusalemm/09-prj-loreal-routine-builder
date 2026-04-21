@@ -191,8 +191,9 @@ async function generateRoutine() {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
-    const data = await response.json();
-    const aiResponse = data.choices?.[0]?.message?.content || "No response";
+    const text = await response.text();
+    console.log("Raw response from worker:", text);
+    const data = JSON.parse(text);
 
     // Add assistant response to conversation history
     messages.push({ role: "assistant", content: aiResponse });
@@ -261,7 +262,7 @@ chatForm.addEventListener("submit", async (e) => {
     }
 
     const data = await response.json();
-   const aiResponse = data.choices?.[0]?.message?.content || "No response";
+   const aiResponse = data.rely;
 
     // Add assistant response to conversation history
     messages.push({ role: "assistant", content: aiResponse });
