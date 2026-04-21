@@ -1,5 +1,5 @@
 /* Get references to DOM elements */
-const WORKER_URL = "https://lorealsmartroutine.jtut.workers.dev";
+const API_URL = "https://api.openai.com/v1/chat/completions";
 const categoryFilter = document.getElementById("categoryFilter");
 const productsContainer = document.getElementById("productsContainer");
 const chatForm = document.getElementById("chatForm");
@@ -15,6 +15,18 @@ let allProducts = []; // Store all products for easy access
 
 /* Array to hold conversation messages */
 let messages = [];
+
+/* Update the chat window with current messages */
+function updateChatWindow() {
+  chatWindow.innerHTML = messages
+    .map(
+      (message) =>
+        `<div class="message ${message.role}"><strong>${
+          message.role === "user" ? "You" : "AI"
+        }:</strong> ${message.content}</div>`,
+    )
+    .join("");
+}
 
 /* Show initial placeholder until user selects a category */
 productsContainer.innerHTML = `
@@ -46,7 +58,7 @@ function loadSelectedProducts() {
   if (savedIds) {
     const ids = JSON.parse(savedIds);
     selectedProducts = allProducts.filter((product) =>
-      ids.includes(product.id)
+      ids.includes(product.id),
     );
     updateSelectedProductsList();
   }
@@ -66,7 +78,7 @@ function displayProducts(products) {
         <div class="product-description" style="display: none;">${product.description}</div>
       </div>
     </div>
-  `
+  `,
     )
     .join("");
 
@@ -84,7 +96,7 @@ categoryFilter.addEventListener("change", async (e) => {
   const selectedCategory = e.target.value;
 
   const filteredProducts = products.filter(
-    (product) => product.category === selectedCategory
+    (product) => product.category === selectedCategory,
   );
 
   displayProducts(filteredProducts);
@@ -130,7 +142,7 @@ function updateSelectedProductsList() {
       <span>${product.name} by ${product.brand}</span>
       <button class="remove-btn" data-id="${product.id}">Remove</button>
     </div>
-  `
+  `,
     )
     .join("");
 }
@@ -158,7 +170,7 @@ async function generateRoutine() {
   const productList = selectedProducts
     .map(
       (product) =>
-        `${product.name} by ${product.brand}: ${product.description}`
+        `${product.name} by ${product.brand}: ${product.description}`,
     )
     .join("\n");
 
@@ -166,15 +178,20 @@ async function generateRoutine() {
 
   messages.push({ role: "user", content: userMessage });
 
-  chatWindow.innerHTML = "Generating your routine...";
+  updateChatWindow();
+  const generatingDiv = document.createElement("div");
+  generatingDiv.className = "message assistant";
+  generatingDiv.innerHTML = "<strong>AI:</strong> Generating your routine...";
+  chatWindow.appendChild(generatingDiv);
 
   try {
-    const response = await fetch(WORKER_URL, {
+    const response = await fetch(API_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${OPENAI_API_KEY}`,
       },
-      body: JSON.stringify({ messages }),
+      body: JSON.stringify({ model: "gpt-4o", messages }),
     });
 
     if (!response.ok) {
@@ -182,18 +199,11 @@ async function generateRoutine() {
     }
 
     const data = await response.json();
-    const aiResponse = data.reply || "No response";
+    const aiResponse = data.choices[0].message.content || "No response";
 
     messages.push({ role: "assistant", content: aiResponse });
 
-    chatWindow.innerHTML = messages
-      .map(
-        (message) =>
-          `<div class="message ${message.role}"><strong>${
-            message.role === "user" ? "You" : "AI"
-          }:</strong> ${message.content}</div>`
-      )
-      .join("");
+    updateChatWindow();
   } catch (error) {
     chatWindow.innerHTML = `Error generating routine: ${error.message}`;
   }
@@ -227,15 +237,20 @@ chatForm.addEventListener("submit", async (e) => {
 
   messages.push({ role: "user", content: userQuestion });
   chatInput.value = "";
-  chatWindow.innerHTML = "Thinking...";
+  updateChatWindow();
+  const thinkingDiv = document.createElement("div");
+  thinkingDiv.className = "message assistant";
+  thinkingDiv.innerHTML = "<strong>AI:</strong> Thinking...";
+  chatWindow.appendChild(thinkingDiv);
 
   try {
-    const response = await fetch(WORKER_URL, {
+    const response = await fetch(API_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${OPENAI_API_KEY}`,
       },
-      body: JSON.stringify({ messages }),
+      body: JSON.stringify({ model: "gpt-4o", messages }),
     });
 
     if (!response.ok) {
@@ -243,11 +258,11 @@ chatForm.addEventListener("submit", async (e) => {
     }
 
     const data = await response.json();
-    const aiResponse = data.reply || "No response";
+    const aiResponse = data.choices[0].message.content || "No response";
 
     messages.push({ role: "assistant", content: aiResponse });
 
-    chatWindow.innerHTML = aiResponse;
+    updateChatWindow();
   } catch (error) {
     chatWindow.innerHTML = `Error: ${error.message}`;
   }
@@ -263,7 +278,7 @@ clearAllBtn.addEventListener("click", () => {
   saveSelectedProducts();
 
   const selectedCards = productsContainer.querySelectorAll(
-    ".product-card.selected"
+    ".product-card.selected",
   );
   selectedCards.forEach((card) => card.classList.remove("selected"));
 });
